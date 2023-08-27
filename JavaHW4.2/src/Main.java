@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Random;
 
 public class Main {
@@ -24,7 +23,9 @@ public class Main {
             System.out.println("Round " + roundNumber);
             round();
         }
+
     }
+
     public static void changeBossDefence() {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
@@ -51,8 +52,8 @@ public class Main {
             return true;
         }
         boolean allHearoesDead = true;
-        for (int j : heroesHealth) {
-            if (j > 0) {
+        for (int i = 0; i < heroesHealth.length; i++) {
+            if (heroesHealth[i] > 0) {
                 allHearoesDead = false;
                 break;
             }
@@ -74,8 +75,8 @@ public class Main {
                     heroesHealth[i] = 0;
                 } else if (heroesHealth[i] == heroesHealth[3]) {
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
-                } else if (l == 1 && heroesAttackType[i] == heroesAttackType[4]) {
-                    continue;
+                } else if (l == 1 && heroesHealth[i] == heroesHealth[4]) {
+                        continue;
                 } else if (heroesHealth[i] == heroesHealth[4]) {
                     berseckHealth = bossHealth - 20;
                     heroesHealth[5] += 30;
@@ -91,9 +92,9 @@ public class Main {
         for (int i = 0; i < heroesHealth.length; i++) {
             if (heroesHealth[i] > 0) {
                 if (bossHealth > 0) {
-                    if (Objects.equals(bossDefenceType, heroesAttackType[i])) {
+                    if (bossDefenceType == heroesAttackType[i]) {
                         Random r = new Random();
-                        int coef = r.nextInt(5) + 2;//2, 3, 4
+                        int coef = r.nextInt(8) + 2;//2, 3, 4, 5, 6, 7, 8, 9
                         if (bossHealth - heroesDamage[i] * coef < 0) {
                             bossHealth = 0;
                         } else {
@@ -113,11 +114,12 @@ public class Main {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
         medicTreatType = heroesAttackType[randomIndex];
+
         for (int i = 0; i < heroesHealth.length; i++) {
-            if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
-                heroesHealth[i] += 50;
-                System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
-                break;
+                if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
+                    heroesHealth[i] += 50;
+                    System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
+                    break;
             }
         }
     }
