@@ -102,15 +102,12 @@ public class Main {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
         medicTreatType = heroesAttackType[randomIndex];
-
         for (int i = 0; i < heroesHealth.length; i++) {
-
-            if(medicTreatType == heroesAttackType[i]) {
             if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
                 heroesHealth[i] += 50;
                 System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
+                break;
             }
-        }
         }
     }
 
