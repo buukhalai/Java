@@ -5,8 +5,8 @@ public class Main {
     public static int bossDamage = 50;
     public static String bossDefenceType = "";
     public static String medicTreatType = "";
-    public static int[] heroesHealth = {250, 260, 270, 200, 240, 230};
-    public static int[] heroesDamage = {20, 15, 25, 5, 30, 10};
+    public static int[] heroesHealth = {250, 260, 270, 200, 240, 230, 220};
+    public static int[] heroesDamage = {20, 15, 25, 2, 30, 10, 5};
 
     public static int medicHealth = 500;
     public static int golemHealth;
@@ -23,7 +23,6 @@ public class Main {
             System.out.println("Round " + roundNumber);
             round();
         }
-
     }
 
     public static void changeBossDefence() {
@@ -40,7 +39,7 @@ public class Main {
         }
         heroesHit();
 
-        if (bossHealth > 0) {
+        if (bossHealth > 0 && bossDefenceType != heroesAttackType[6]) {
             bossHits();
         }
         printStatistics();
@@ -66,23 +65,23 @@ public class Main {
 
     public static void bossHits() {
         medicHealth = medicHealth - bossDamage;
-
         Random r = new Random();
         int l = r.nextInt(2);
+
         for (int i = 0; i < heroesHealth.length; i++) {
             if (bossHealth > 0) {
                 if (heroesHealth[i] < bossDamage) {
                     heroesHealth[i] = 0;
                 } else if (heroesHealth[i] == heroesHealth[3]) {
+                    heroesHealth[i] = heroesHealth[i] - bossDamage;
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
-                } else if (l == 1 && heroesHealth[i] == heroesHealth[4]) {
-                        continue;
-                } else if (heroesHealth[i] == heroesHealth[4]) {
+                } else if (heroesAttackType[i] == heroesAttackType[4] && l == 1) {
+                    continue;
+                } else if (heroesHealth[i] == heroesHealth[5]) {
                     berseckHealth = bossHealth - 20;
                     heroesHealth[5] += 30;
                 } else {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
-
                 }
             }
         }
@@ -94,7 +93,7 @@ public class Main {
                 if (bossHealth > 0) {
                     if (bossDefenceType == heroesAttackType[i]) {
                         Random r = new Random();
-                        int coef = r.nextInt(8) + 2;//2, 3, 4, 5, 6, 7, 8, 9
+                        int coef = r.nextInt(5) + 2;//2, 3, 4
                         if (bossHealth - heroesDamage[i] * coef < 0) {
                             bossHealth = 0;
                         } else {
@@ -116,10 +115,10 @@ public class Main {
         medicTreatType = heroesAttackType[randomIndex];
 
         for (int i = 0; i < heroesHealth.length; i++) {
-                if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
-                    heroesHealth[i] += 50;
-                    System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
-                    break;
+            if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
+                heroesHealth[i] += 50;
+                System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
+                break;
             }
         }
     }
