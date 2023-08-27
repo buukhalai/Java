@@ -1,3 +1,4 @@
+import javax.swing.plaf.IconUIResource;
 import java.util.Random;
 
 public class Main {
@@ -12,7 +13,7 @@ public class Main {
     public static int golemHealth;
     public static int berseckHealth;
     public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic",
-            "Golem", "Lucky", "Berseck"};
+            "Golem", "Lucky", "Berseck", "Thor"};
     public static int roundNumber = 0;
 
     public static void main(String[] args) {
@@ -30,13 +31,14 @@ public class Main {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
         bossDefenceType = heroesAttackType[randomIndex];
-        System.out.println("Boss choose " + bossDefenceType);
-
+        if (bossDefenceType == heroesAttackType[4]) {
+        }
+        System.out.println("Boss choose: " + bossDefenceType);
     }
 
     public static void round() {
         changeBossDefence();
-        if(medicHealth>0) {
+        if (medicHealth > 0) {
             medicTreat();
         }
         heroesHit();
@@ -68,19 +70,25 @@ public class Main {
     public static void bossHits() {
         medicHealth = medicHealth - bossDamage;
 
+        Random r = new Random();
+        int l = r.nextInt(2);
         for (int i = 0; i < heroesHealth.length; i++) {
             if (bossHealth > 0) {
                 if (heroesHealth[i] < bossDamage) {
                     heroesHealth[i] = 0;
+                } else if (heroesHealth[i] == heroesHealth[3]) {
+                    golemHealth = heroesHealth[3] += (bossDamage / 5);
+                } else if (l == 1 && heroesHealth[i] == heroesHealth[4]) {
+                    continue;
+                } else if (heroesHealth[i] == heroesHealth[4]) {
+                    berseckHealth = bossHealth - 20;
+                    heroesHealth[5] += 30;
                 } else {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
+
                 }
             }
         }
-        golemHealth = heroesHealth[3] += (bossDamage/5);
-        //System.out.println("Golim Health: "+ golimHealth);
-
-        berseckHealth = heroesHealth[5] + 20;
     }
 
     public static void heroesHit() {
@@ -94,7 +102,7 @@ public class Main {
                             bossHealth = 0;
                         } else {
                             bossHealth = bossHealth - heroesDamage[i] * coef;
-                            heroesDamage[5]+=berseckHealth;
+                            heroesDamage[5] += 30;
                         }
                         System.out.println("Critical attack: " + heroesDamage[i] * coef);
                     }
@@ -126,10 +134,8 @@ public class Main {
 
         System.out.println("Boss Health: " + bossHealth);
 
-        //System.out.println("medicHealth: " + medicHealth);
-
         for (int i = 0; i < heroesHealth.length; i++) {
-            System.out.println(heroesAttackType[i] + ": Health " + heroesHealth[i]);
+            System.out.println(heroesAttackType[i] + " Health: " + heroesHealth[i]);
         }
         System.out.println("_________________________");
     }
