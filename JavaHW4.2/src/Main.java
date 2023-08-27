@@ -23,9 +23,7 @@ public class Main {
             System.out.println("Round " + roundNumber);
             round();
         }
-
     }
-
     public static void changeBossDefence() {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
@@ -94,7 +92,7 @@ public class Main {
                 if (bossHealth > 0) {
                     if (bossDefenceType == heroesAttackType[i]) {
                         Random r = new Random();
-                        int coef = r.nextInt(8) + 2;//2, 3, 4, 5, 6, 7, 8, 9
+                        int coef = r.nextInt(5) + 2;//2, 3, 4
                         if (bossHealth - heroesDamage[i] * coef < 0) {
                             bossHealth = 0;
                         } else {
