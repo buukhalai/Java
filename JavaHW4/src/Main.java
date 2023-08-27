@@ -34,6 +34,7 @@ public class Main {
     public static void round() {
         changeBossDefence();
         medicTreat();
+        treatmentFromMedic();
         heroesHit();
 
         if (bossHealth > 0) {
@@ -106,6 +107,25 @@ public class Main {
             if (medicHealth > 0 && heroesHealth[i] < 100 && heroesHealth[i] > 0) {
                 heroesHealth[i] += 50;
                 System.out.println("Medic treat: " + medicTreatType + " " + heroesHealth[i]);
+                break;
+            }
+        }
+    }
+
+    public static void treatmentFromMedic() {
+
+        for (int i = 0; i < heroesHealth.length; i++) {
+
+            int treatmentAmount = 50;
+
+            int randomLuck = (int) (Math.random() * heroesHealth.length);
+
+            if (heroesHealth[randomLuck] != heroesHealth[3] && heroesHealth[randomLuck] > 0 && heroesHealth[randomLuck] < 100) {
+                heroesHealth[randomLuck] += treatmentAmount;
+
+                heroesHealth[3] -= treatmentAmount;
+                System.out.println("___");
+                System.out.println(heroesAttackType[randomLuck] + " gets treatment from Medic + " + treatmentAmount);
                 break;
             }
         }

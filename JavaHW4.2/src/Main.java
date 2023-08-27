@@ -31,8 +31,6 @@ public class Main {
         Random r = new Random();
         int randomIndex = r.nextInt(heroesAttackType.length);
         bossDefenceType = heroesAttackType[randomIndex];
-        if (bossDefenceType == heroesAttackType[4]) {
-        }
         System.out.println("Boss choose: " + bossDefenceType);
     }
 
