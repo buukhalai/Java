@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Random;
 
 public class Main {
@@ -50,8 +51,8 @@ public class Main {
             return true;
         }
         boolean allHearoesDead = true;
-        for (int i = 0; i < heroesHealth.length; i++) {
-            if (heroesHealth[i] > 0) {
+        for (int j : heroesHealth) {
+            if (j > 0) {
                 allHearoesDead = false;
                 break;
             }
@@ -73,7 +74,7 @@ public class Main {
                     heroesHealth[i] = 0;
                 } else if (heroesHealth[i] == heroesHealth[3]) {
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
-                } else if (l == 1 && heroesHealth[i] == heroesHealth[4]) {
+                } else if (l == 1 && heroesAttackType[i] == heroesAttackType[4]) {
                     continue;
                 } else if (heroesHealth[i] == heroesHealth[4]) {
                     berseckHealth = bossHealth - 20;
@@ -90,7 +91,7 @@ public class Main {
         for (int i = 0; i < heroesHealth.length; i++) {
             if (heroesHealth[i] > 0) {
                 if (bossHealth > 0) {
-                    if (bossDefenceType == heroesAttackType[i]) {
+                    if (Objects.equals(bossDefenceType, heroesAttackType[i])) {
                         Random r = new Random();
                         int coef = r.nextInt(5) + 2;//2, 3, 4
                         if (bossHealth - heroesDamage[i] * coef < 0) {
