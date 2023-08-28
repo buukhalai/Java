@@ -9,7 +9,7 @@ public class Main {
     public static int[] heroesDamage = {20, 15, 25};
 
     public static int medicHealth = 500;
-    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic"};
+    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic"x};
     public static int roundNumber = 0;
 
     public static void main(String[] args) {
