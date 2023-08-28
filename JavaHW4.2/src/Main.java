@@ -71,7 +71,7 @@ public class Main {
             if (bossHealth > 0) {
                 if (heroesHealth[i] < bossDamage) {
                     heroesHealth[i] = 0;
-                    //Golem __________________________
+                    //Golem ____________________________
                 } else if (heroesHealth[i] == heroesHealth[3]) {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
