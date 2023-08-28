@@ -78,7 +78,8 @@ public class Main {
                     //Lucky_______________________
                 } else if (heroesAttackType[i] == heroesAttackType[4] && l == 1) {
                     continue;
-                    //Berseck________________________
+                    //Berseck___________________________
+
                 } else if (heroesHealth[i] == heroesHealth[5]) {
                     berseckHealth = bossHealth - 20;
                     heroesHealth[5] += 30;
