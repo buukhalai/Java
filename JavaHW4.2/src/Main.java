@@ -71,14 +71,14 @@ public class Main {
             if (bossHealth > 0) {
                 if (heroesHealth[i] < bossDamage) {
                     heroesHealth[i] = 0;
-                    //Golem
+                    //Golem __________________________
                 } else if (heroesHealth[i] == heroesHealth[3]) {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
-                    //Lucky
+                    //Lucky_______________________
                 } else if (heroesAttackType[i] == heroesAttackType[4] && l == 1) {
                     continue;
-                    //Berseck
+                    //Berseck________________________
                 } else if (heroesHealth[i] == heroesHealth[5]) {
                     berseckHealth = bossHealth - 20;
                     heroesHealth[5] += 30;
