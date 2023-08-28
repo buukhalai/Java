@@ -31,7 +31,6 @@ public class Main {
         bossDefenceType = heroesAttackType[randomIndex];
         System.out.println("Boss choose: " + bossDefenceType);
     }
-
     public static void round() {
         changeBossDefence();
         if (medicHealth > 0) {
@@ -39,7 +38,7 @@ public class Main {
         }
         heroesHit();
 
-        if (bossHealth > 0 && bossDefenceType != heroesAttackType[6]) {
+        if (bossHealth > 0) {
             bossHits();
         }
         printStatistics();
@@ -72,11 +71,14 @@ public class Main {
             if (bossHealth > 0) {
                 if (heroesHealth[i] < bossDamage) {
                     heroesHealth[i] = 0;
+                    //Golem
                 } else if (heroesHealth[i] == heroesHealth[3]) {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
                     golemHealth = heroesHealth[3] += (bossDamage / 5);
+                    //Lucky
                 } else if (heroesAttackType[i] == heroesAttackType[4] && l == 1) {
                     continue;
+                    //Berseck
                 } else if (heroesHealth[i] == heroesHealth[5]) {
                     berseckHealth = bossHealth - 20;
                     heroesHealth[5] += 30;
