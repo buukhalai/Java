@@ -9,9 +9,9 @@ public class Main {
     public static int[] heroesDamage = {20, 15, 25, 2, 10, 5};
 
     public static int medicHealth = 500;
-    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic", "Golem", "Lucky","Berseck", "Thor"};
+    public static String[] heroesAttackType = {"Physical", "Magical", "Kinetic", "Golem", "Lucky", "Berseck", "Thor"};
     public static int roundNumber = 0;
-    public static int  berseckHits = 0;
+    public static int berseckHits = 0;
 
     public static void main(String[] args) {
         System.out.println("Game start");
@@ -77,19 +77,18 @@ public class Main {
                 } else if (heroesAttackType[i] == "Golem") {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
                     heroesHealth[3] += (bossDamage / 5);
-                } else if (heroesAttackType[i]=="Lucky" && l==1) {
+                } else if (heroesAttackType[i] == "Lucky" && l == 1) {
                     continue;
-                } else if (heroesAttackType[i]=="Berseck") {
-                    int n = bossDamage-20;
-                    heroesHealth[5]-=n;
-                    berseckHits +=20;
-                    System.out.println("Berseck's points "+berseckHits);
-                    if(bossDefenceType=="Berseck"){
-                        System.out.println("Berseck Hits with point:"+berseckHits);
+                } else if (heroesAttackType[i] == "Berseck") {
+                    int n = bossDamage - 20;
+                    heroesHealth[5] -= n;
+                    berseckHits += 20;
+                    System.out.println("Berseck's points " + berseckHits);
+                    if (bossDefenceType == "Berseck") {
+                        System.out.println("Berseck Hits with point:" + berseckHits);
                         bossHealth -= berseckHits;
                     } else if (bossDefenceType == "Thor") {
-                        if(l == 0) {
-
+                        if (l == 0) {
                             bossHealth -= bossHealth;
                             System.out.println("Boss dead " + bossHealth);
                         }
@@ -136,6 +135,7 @@ public class Main {
             }
         }
     }
+
     public static void printStatistics() {
         System.out.println("_________________________");
 
