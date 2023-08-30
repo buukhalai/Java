@@ -30,6 +30,11 @@ public class Main {
         int randomIndex = r.nextInt(heroesAttackType.length);
         bossDefenceType = heroesAttackType[randomIndex];
         System.out.println("Boss choose: " + bossDefenceType);
+        //Berseck___________________________
+        if(bossDefenceType=="Berseck" && heroesHealth[5]>0){
+            berseckHealth = bossHealth - 20;
+            heroesHealth[5] += 30;
+        }
     }
     public static void round() {
         changeBossDefence();
@@ -78,10 +83,7 @@ public class Main {
                     //Lucky____ ___________________
                 } else if (heroesAttackType[i] == heroesAttackType[4] && l == 1) {
                     continue;
-                    //Berseck___________________________
-                } else if (heroesHealth[i] == heroesHealth[5]) {
-                    berseckHealth = bossHealth - 20;
-                    heroesHealth[5] += 30;
+
                 } else {
                     heroesHealth[i] = heroesHealth[i] - bossDamage;
                 }
