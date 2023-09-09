@@ -2,7 +2,6 @@ public class Boss {
     private int bossHealth;
     private int bossDamage;
     private String bossDefenceType;
-
     public int getBossHealth() {
         return bossHealth;
     }

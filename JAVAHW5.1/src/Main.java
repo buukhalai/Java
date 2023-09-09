@@ -19,7 +19,6 @@ public class Main {
                     heroes[i].getHeroDamage() +" "+ heroes[i].getHeroHealth());
         }
     }
-
     public static Hero[] createHeroes() {
         Hero mag = new Hero(200, 20, "Magic");
         Hero golem = new Hero(220, 15);
