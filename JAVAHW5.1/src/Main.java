@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Main {
         Hero golem = new Hero(220, 15);
         Hero lucky = new Hero(210, 10, "Lucky");
 
-        Hero[] heroes = {mag, golem, lucky};
+        Hero [] heroes = {mag, golem, lucky};
 
         return heroes;
     }
